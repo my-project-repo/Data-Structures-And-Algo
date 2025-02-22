@@ -1,7 +1,10 @@
 class Solution {
     public int addedInteger(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        return nums2[0]-nums1[0];
+        int minOne = Integer.MAX_VALUE, minTwo = Integer.MAX_VALUE;
+        for (int i = 0; i < nums1.length; i++) {
+            minOne = Math.min(minOne, nums1[i]);
+            minTwo = Math.min(minTwo, nums2[i]);
+        }
+        return minTwo - minOne;
     }
 }
