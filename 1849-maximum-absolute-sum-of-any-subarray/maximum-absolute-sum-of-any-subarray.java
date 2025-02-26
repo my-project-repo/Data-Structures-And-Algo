@@ -1,5 +1,7 @@
 class Solution {
     public int maxAbsoluteSum(int[] nums) {
+        if (nums.length==1)
+        return Math.abs(nums[0]);
         // Kadane's Approach
         int max = 0, sum = 0, min = 0, sumTwo = 0;
         for (int i : nums) {
