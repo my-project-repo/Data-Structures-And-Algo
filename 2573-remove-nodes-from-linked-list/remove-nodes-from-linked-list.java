@@ -10,17 +10,17 @@
  */
 class Solution {
     public ListNode removeNodes(ListNode head) {
-        PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
         head = reverse(head);
         ListNode ans = new ListNode(-1);
         ListNode temp = ans;
+        int max = -99;
         while (head != null) {
 
-            if (queue.isEmpty() || queue.peek() <= head.val) {
+            if (max <= head.val) {
                 temp.next = new ListNode(head.val);
                 temp = temp.next;
             }
-            queue.offer(head.val);
+            max = Math.max(max,head.val);
             head = head.next;
         }
         return reverse(ans.next);
