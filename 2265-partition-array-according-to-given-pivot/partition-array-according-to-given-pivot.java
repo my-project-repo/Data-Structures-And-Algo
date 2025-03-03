@@ -1,28 +1,26 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class Solution {
     public int[] pivotArray(int[] nums, int pivot) {
-        List<Integer> list = new ArrayList<>();
+        int res [] = new int[nums.length];
         int p = 0,piv=0;
         // smaller
         for (int i : nums)
         {
             if (i<pivot)
-                nums[p++] = i;
-            else if (i==pivot) piv++;
-            else list.add(i);
+                res[p++] = i;
+            if (i==pivot) piv++;
         }
         // pivot
         for (int i = 0;i<piv;i++)
         {
-            nums[p++] = pivot;
-        }
+            res[p++] = pivot;
+        }        
         // larger
-        for (int i : list)
+        for (int i : nums)
         {
-            nums[p++] = i;
+            if (i>pivot)
+                res[p++] = i;
         }
-        return  nums;
+        return  res;
+        
     }
 }
