@@ -1,10 +1,9 @@
 class Solution {
     public long coloredCells(int n) {
         long sum = 1;
-        int p = 0;
-        for (int i = 1;i<=n;i++)
+        for (int i = 2;i<=n;i++)
         {
-            sum += 4 * p++;
+            sum += 4 * (i-1);
         }
         return sum;
     }
