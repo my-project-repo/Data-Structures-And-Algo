@@ -1,27 +1,28 @@
 class Solution {
     public int[] closestPrimes(int left, int right) {
-        Stack<Integer> stack = new Stack<>();
-        int min = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE, first = -99;
         int[] res = { -1, -1 };
         for (int i = left; i <= right; i++) {
             if (isPrime(i)) {
-                if (!stack.isEmpty() && i - stack.peek() < min) {
-                    res[0] = stack.peek();
+                if (first != -99 && i - first < min) {
+                    res[0] = first;
                     res[1] = i;
-                    min = i - stack.peek();
+                    min = i - first;
                 }
-                stack.push(i);
+                first = i;
             }
         }
         return res;
     }
 
     boolean isPrime(int n) {
-        if (n == 1)
-            return false;
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0)
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
                 return false;
+            }
         }
         return true;
     }
