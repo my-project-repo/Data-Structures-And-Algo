@@ -1,11 +1,10 @@
 class Solution {
     public int minimumRecolors(String blocks, int k) {
         int WCount = 0, i, j, min;
-        for (i = 0; i < k; i++) {
-            if (blocks.charAt(i) == 'W')
+        for (j = 0; j < k; j++) {
+            if (blocks.charAt(j) == 'W')
                 WCount++;
         }
-        j = k;
         i = 1;
         min = WCount;
         while (i < blocks.length() && j < blocks.length()) {
