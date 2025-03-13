@@ -1,5 +1,6 @@
 class Solution {
     public boolean isZeroArray(int[] nums, int[][] queries) {
+        // differenceArray Approach
         int[] res = new int[nums.length + 1];
         for (int[] query : queries) {
             res[query[0]] -= 1;
