@@ -1,5 +1,6 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
+        if (nums.length==1) return nums;
         int[] res = new int[k];
         PriorityQueue<Max> heap = new PriorityQueue<>(Comparator.comparingInt(Max::getCount).reversed());
         int p = 0;
