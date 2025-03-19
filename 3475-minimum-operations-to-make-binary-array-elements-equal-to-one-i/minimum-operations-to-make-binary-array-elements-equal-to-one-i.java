@@ -5,15 +5,11 @@ class Solution {
             if (nums[i] == 0) {
                 count++;
                 nums[i] = 1;
-                nums[i + 1] = (nums[i + 1] == 0 ? 1 : 0);
-                nums[i + 2] = (nums[i + 2] == 0 ? 1 : 0);
+                nums[i + 1] ^= 1;
+                nums[i + 2] ^= 1;
             }
         }
-        for (int i : nums)
-            if (i == 0)
-                return -1;
-
-        return count;
+        return (nums[n - 2] == 1 && nums[n - 1] == 1) ? count : -1;
 
     }
 }
