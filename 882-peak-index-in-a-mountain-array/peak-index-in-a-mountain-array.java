@@ -1,14 +1,13 @@
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
-        // bruteForce
-        int max = Integer.MIN_VALUE, res = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (max < arr[i]) {
-                max = arr[i];
-                res = i;
-            } else
-                break;
+        int start = 0, end = arr.length - 1;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (arr[mid] > arr[mid + 1])
+                end = mid;
+            else
+                start = mid + 1;
         }
-        return res;
+        return end;
     }
 }
