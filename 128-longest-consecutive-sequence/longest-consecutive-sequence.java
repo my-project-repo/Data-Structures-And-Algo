@@ -1,6 +1,7 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
-        if(nums.length==0)return 0;
+        if (nums.length == 0)
+            return 0;
         Arrays.sort(nums);
         int p = nums[0], max = Integer.MIN_VALUE, counter = 1;
         for (int i = 1; i < nums.length; i++) {
