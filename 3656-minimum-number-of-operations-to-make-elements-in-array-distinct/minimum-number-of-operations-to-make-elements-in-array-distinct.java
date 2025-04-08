@@ -1,17 +1,11 @@
 class Solution {
     public int minimumOperations(int[] nums) {
-        if (nums.length == 1)
-            return 0;
-        double output = 0;
-        Set<Integer> set = new HashSet<>();
-        int n = nums.length;
-        for (int i = n - 1; i >= 0; i--) {
-            if (set.contains(nums[i]))
-                break;
-            output++;
-            set.add(nums[i]);
+        int[] freq = new int[101];
+        for (int i = nums.length - 1; i >= 0; i--) {
+            freq[nums[i]]++;
+            if (freq[nums[i]] > 1)
+                return (int) Math.ceil((double) (i + 1) / 3);
         }
-        output = Math.ceil((n - output) / 3);
-        return (int) output;
+        return 0;
     }
 }
