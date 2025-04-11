@@ -13,11 +13,10 @@ class Solution {
         int size = var.length(), sumOne = 0, sumTwo = 0;
         if (size % 2 != 0)
             return false;
+        size = size / 2;
         for (int i = 0; i < size; i++) {
-            if (i < size / 2)
-                sumOne += var.charAt(i) - '0';
-            else
-                sumTwo += var.charAt(i) - '0';
+            sumOne += var.charAt(i) - '0';
+            sumTwo += var.charAt(size + i) - '0';
 
         }
         return sumOne == sumTwo;
