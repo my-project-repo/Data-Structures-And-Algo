@@ -17,7 +17,7 @@ class Solution {
                 map.remove(oldNum);
             } else
                 map.put(oldNum, map.get(oldNum) - 1);
-            map.put(newNum, map.getOrDefault(newNum, 0) + 1);
+            map.put(nums.get(i), map.getOrDefault(nums.get(i), 0) + 1);
             if (map.size() >= m) {
                 max = Math.max(max, sum);
             }
