@@ -7,15 +7,16 @@ class Solution {
             sum += nums.get(i);
         }
         if (map.size() >= m)
-            max = Math.max(max, sum);
+            max = sum;
         for (int i = k; i < nums.size(); i++) {
             int newNum = nums.get(i);
             int oldNum = nums.get(i - k);
-            sum -= oldNum;
-            map.put(oldNum, map.get(oldNum) - 1);
-            if (map.get(oldNum) == 0)
-                map.remove(oldNum);
             sum += newNum;
+            sum -= oldNum;
+            if (map.get(oldNum) == 1) {
+                map.remove(oldNum);
+            } else
+                map.put(oldNum, map.get(oldNum) - 1);
             map.put(nums.get(i), map.getOrDefault(nums.get(i), 0) + 1);
             if (map.size() >= m) {
                 max = Math.max(max, sum);
