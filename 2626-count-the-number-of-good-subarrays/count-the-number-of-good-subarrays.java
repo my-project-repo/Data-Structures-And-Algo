@@ -2,8 +2,8 @@ class Solution {
     public long countGood(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         long res = 0, pair = 0;
-        int i = 0;
-        for (int j = 0; j < nums.length; j++) {
+        int i = 0, j = 0;
+        while (j < nums.length) {
             pair += map.getOrDefault(nums[j], 0);
             map.put(nums[j], map.getOrDefault(nums[j], 0) + 1);
             while (pair >= k) {
@@ -12,6 +12,7 @@ class Solution {
                 pair -= map.get(nums[i]);
                 i++;
             }
+            j++;
         }
         return res;
     }
