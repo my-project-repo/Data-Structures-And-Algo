@@ -1,24 +1,19 @@
 class Solution {
     public long countGood(int[] nums, int k) {
-        Map<Integer, Integer> freq = new HashMap<>();
-        int left = 0;
-        long pairCount = 0;
-        long goodSubarrays = 0;
-
-        for (int right = 0; right < nums.length; right++) {
-            int count = freq.getOrDefault(nums[right], 0);
-            pairCount += count;
-            freq.put(nums[right], count + 1);
-
-            while (pairCount >= k) {
-                goodSubarrays += nums.length - right;
-                int leftNum = nums[left++];
-                int f = freq.get(leftNum);
-                freq.put(leftNum, f - 1);
-                pairCount -= (f - 1);
+        Map<Integer, Integer> map = new HashMap<>();
+        long res = 0, pair = 0;
+        int i = 0, j = 0;
+        while (j < nums.length) {
+            pair += map.getOrDefault(nums[j], 0);
+            map.put(nums[j], map.getOrDefault(nums[j], 0) + 1);
+            while (pair >= k) {
+                res += nums.length - j;
+                map.put(nums[i], map.get(nums[i]) - 1);
+                pair -= map.get(nums[i]);
+                i++;
             }
+            j++;
         }
-
-        return goodSubarrays;
+        return res;
     }
 }
