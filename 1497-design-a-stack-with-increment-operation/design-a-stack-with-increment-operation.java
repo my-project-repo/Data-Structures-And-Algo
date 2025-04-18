@@ -21,9 +21,14 @@ class CustomStack {
     }
 
     public void increment(int k, int val) {
-        int min = Math.min(k, index + 1);
-        for (int i = 0; i < min; i++) {
-            arr[i] += val;
+        if ((index + 1) <= k) {
+            for (int i = 0; i <= index; i++) {
+                arr[i] += val;
+            }
+        } else {
+            for (int i = 0; i < k; i++) {
+                arr[i] += val;
+            }
         }
     }
 }
