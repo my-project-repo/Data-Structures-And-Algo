@@ -4,7 +4,10 @@ class Solution {
         int k = 0, counter = 1;
         while (candies > 0) {
             int index = k % num_people;
-            res[index] += (counter > candies) ? candies : counter;
+            if (counter <= candies) {
+                res[index] += counter;
+            } else
+                res[index] += candies;
             candies -= counter;
             counter++;
             k++;
