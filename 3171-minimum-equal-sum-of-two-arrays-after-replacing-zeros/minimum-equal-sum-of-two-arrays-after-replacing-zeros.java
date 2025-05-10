@@ -13,12 +13,12 @@ class Solution {
             else
                 sumTwo += i;
         }
-        if (zeroOne == zeroTwo && zeroTwo == 0)
-            return (sumOne == sumTwo) ? sumOne : -1;
-        else if (zeroOne == 0)
-            return sumOne >= (sumTwo + zeroTwo) ? sumOne : -1;
-        else if (zeroTwo == 0)
-            return sumTwo >= (sumOne + zeroOne) ? sumTwo : -1;
-        return Math.max(sumOne + zeroOne, sumTwo + zeroTwo);
+        long minOne = sumOne + zeroOne;
+        long minTwo = sumTwo + zeroTwo;
+        if (minOne > minTwo && zeroTwo == 0)
+            return -1;
+        else if (minTwo > minOne && zeroOne == 0)
+            return -1;
+        return Math.max(minOne, minTwo);
     }
 }
