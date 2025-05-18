@@ -11,16 +11,15 @@ class FrequencyTracker {
         int oldCount = map.getOrDefault(number, 0);
         int newCount = oldCount + 1;
         map.put(number, newCount);
-        mapFreq.put(oldCount, mapFreq.getOrDefault(oldCount, 1) - 1);
+        mapFreq.put(oldCount, mapFreq.getOrDefault(oldCount, 0) - 1);
         mapFreq.put(newCount, mapFreq.getOrDefault(newCount, 0) + 1);
     }
 
     public void deleteOne(int number) {
-        if (!map.containsKey(number))
-            return;
+        if (!map.containsKey(number))return;
         int oldcount = map.get(number);
         int newcount = oldcount - 1;
-        mapFreq.put(oldcount, mapFreq.getOrDefault(oldcount, 1) - 1);
+        mapFreq.put(oldcount, mapFreq.getOrDefault(oldcount, 0) - 1);
         if (mapFreq.get(oldcount) == 0) {
             mapFreq.remove(oldcount);
         }
