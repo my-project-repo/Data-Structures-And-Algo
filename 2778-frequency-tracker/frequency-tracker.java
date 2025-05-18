@@ -1,10 +1,8 @@
 class FrequencyTracker {
-    Map<Integer, Integer> map;
-    Map<Integer, Integer> mapFreq;
+    Map<Integer, Integer> map = new HashMap<>();
+    Map<Integer, Integer> mapFreq = new HashMap<>();
 
     public FrequencyTracker() {
-        map = new HashMap<>();
-        mapFreq = new HashMap<>();
     }
 
     public void add(int number) {
