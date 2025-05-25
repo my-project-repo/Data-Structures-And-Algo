@@ -1,14 +1,14 @@
 class Solution {
     public int maxCount(int[] banned, int n, int maxSum) {
-        Set<Integer> set = new HashSet<>();
+       int [] freq = new int[10001];
         int sum = 0 , count = 0;
         for (int i : banned)
         {
-            if (i <= n ) set.add(i);
+            freq[i]++;
         }
         for (int i = 1;i<=n;i++)
         {
-            if (set.contains(i)) continue;
+            if (freq[i]!=0) continue;
             sum += i;
             if (sum > maxSum) return count;
             count++;
