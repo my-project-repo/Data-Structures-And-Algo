@@ -5,7 +5,7 @@ class Solution {
         long pro = 1;
         for (int right = 0; right < nums.length; right++) {
             pro *= nums[right];
-            while (left < right && pro >= k) {
+            while (pro >= k && left < right) {
                 pro /= nums[left];
                 left++;
             }
