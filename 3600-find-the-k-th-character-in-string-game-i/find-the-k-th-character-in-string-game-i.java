@@ -6,6 +6,7 @@ class Solution {
             for (int i = 0; i < n; i++) {
                 int ch = str.charAt(i);
                 str.append((char) (ch + 1));
+                if (str.length() >= k) break;
             }
         }
         return str.charAt(k - 1);
