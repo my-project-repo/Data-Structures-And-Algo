@@ -5,7 +5,7 @@ class Solution {
         for (int i : arr) {
             freq[i]++;
         }
-        for (int i = 1; i < freq.length; i++) {
+        for (int i : arr) {
             if (freq[i] == i)
                 res = Math.max(res, i);
         }
