@@ -9,7 +9,6 @@ class Solution {
             }
             res++;
         }
-        res += startValue - target;
-        return res;
+        return res + (startValue - target);
     }
 }
