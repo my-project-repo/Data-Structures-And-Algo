@@ -7,8 +7,9 @@ class Solution {
             if (players[idx] <= trainers[idx2]) {
                 res++;
                 idx++;
-            }
-            idx2++;
+                idx2++;
+            } else
+                idx2++;
         }
         return res;
     }
