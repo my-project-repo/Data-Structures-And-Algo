@@ -7,10 +7,8 @@ class Solution {
             freq[ch - 'a']++;
         }
         for (int i : freq) {
-            if (i == 0)
-                continue;
-            if (!set.contains(i))
-                set.add(i);
+            if (i == 0) continue;
+            if (!set.contains(i)) set.add(i);
             else {
                 while (set.contains(i)) {
                     count++;
