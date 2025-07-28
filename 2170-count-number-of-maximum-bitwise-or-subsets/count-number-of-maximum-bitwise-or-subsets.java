@@ -1,20 +1,24 @@
 class Solution {
+    static int res = 0;
+    static int maxOr = 0;
+
     public int countMaxOrSubsets(int[] nums) {
-        int maxOr = 0;
+        res = 0;
+        maxOr = 0;
         for (int i : nums) {
             maxOr |= i; // or of all the digits
         }
-        return countSubSets(0, nums, 0, maxOr);
+        countSubSets(0, nums, 0);
+        return res;
     }
 
-    int countSubSets(int idx, int[] nums, int currOr, int maxOr) {
+    void countSubSets(int idx, int[] nums, int currOr) {
         if (idx == nums.length) {
             if (currOr == maxOr)
-                return 1;
-            return 0;
+                res++;
+            return;
         }
-        int include = countSubSets(idx + 1, nums, currOr | nums[idx], maxOr);
-        int exclude = countSubSets(idx + 1, nums, currOr, maxOr);
-        return include + exclude;
+        countSubSets(idx + 1, nums, currOr | nums[idx]);
+        countSubSets(idx + 1, nums, currOr);
     }
 }
