@@ -1,10 +1,12 @@
 class Solution {
     public int distributeCandies(int[] candyType) {
-        int half = candyType.length / 2;
-        Set<Integer> set = new HashSet<>();
+        int[] arr = new int[200002];
+        int count = 0;
         for (int i : candyType) {
-            set.add(i);
+            if (++arr[i + 100000] == 1)
+                count++;
         }
-        return Math.min(set.size(), half);
+        int n = candyType.length;
+        return Math.min(n / 2, count);
     }
 }
