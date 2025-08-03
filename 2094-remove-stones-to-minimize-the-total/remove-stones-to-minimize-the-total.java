@@ -4,15 +4,13 @@ class Solution {
         int sum = 0;
         for (int i : piles) {
             queue.add(i);
+            sum += i;
         }
         while (k-- > 0) {
-            int deduct = 0;
-            if (!queue.isEmpty())
-                deduct = queue.poll();
-            queue.add(deduct - (int) Math.floor(deduct / 2));
-        }
-        for (int i : queue) {
-            sum += i;
+            int curr = queue.poll();
+            int deduct = (int) Math.floor(curr / 2);
+            queue.add(curr - deduct);
+            sum -= deduct;
         }
         return sum;
     }
