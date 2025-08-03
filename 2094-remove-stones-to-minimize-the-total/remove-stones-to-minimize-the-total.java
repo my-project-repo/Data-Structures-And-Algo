@@ -8,7 +8,7 @@ class Solution {
         }
         while (k-- > 0) {
             int curr = queue.poll();
-            int deduct = (int) Math.floor(curr / 2);
+            int deduct = curr / 2;
             queue.add(curr - deduct);
             sum -= deduct;
         }
