@@ -1,6 +1,6 @@
 class Solution {
     public int minStoneSum(int[] piles, int k) {
-        Queue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+        Queue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
         int sum = 0;
         for (int i : piles) {
             queue.add(i);
