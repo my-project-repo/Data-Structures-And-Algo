@@ -4,7 +4,7 @@ class Solution {
         for (int i : fruits) {
             sign = 0;
             for (int j = 0; j < baskets.length; j++) {
-                if (baskets[j] != 0 && baskets[j] >= i) {
+                if (baskets[j] >= i) {
                     baskets[j] = 0;
                     sign = 1;
                     break;
