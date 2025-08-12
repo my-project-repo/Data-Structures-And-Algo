@@ -1,11 +1,13 @@
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
-        Map<Integer, Integer> map = new HashMap<>();
         Set<Integer> set = new HashSet<>();
+        int[] a = new int[2001];
         for (int i : arr) {
-            map.put(i, map.getOrDefault(i, 0) + 1);
+            a[i + 1000]++;
         }
-        for (int i : map.values()) {
+        for (int i : a) {
+            if (i == 0)
+                continue;
             if (!set.contains(i))
                 set.add(i);
             else
