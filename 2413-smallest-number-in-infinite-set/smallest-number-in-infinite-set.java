@@ -21,8 +21,7 @@ class SmallestInfiniteSet {
     }
 
     public void addBack(int num) {
-        if (k > num && !set.contains(num)) {
-            set.add(num);
+        if (k > num && set.add(num)) {
             minHeap.add(num);
         }
     }
