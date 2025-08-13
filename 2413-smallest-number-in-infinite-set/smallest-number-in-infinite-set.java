@@ -10,22 +10,19 @@ class SmallestInfiniteSet {
     }
 
     public int popSmallest() {
-        if (!minHeap.isEmpty() && minHeap.peek() < k)
-        {
+        if (!minHeap.isEmpty() && minHeap.peek() < k) {
             int min = minHeap.poll();
             set.remove(min);
             return min;
-        } else
-        {
+        } else {
             k++;
-            return k-1;
+            return k - 1;
         }
 
     }
 
     public void addBack(int num) {
-        if (k > num && !set.contains(num))
-        {
+        if (k > num && !set.contains(num)) {
             set.add(num);
             minHeap.add(num);
         }
