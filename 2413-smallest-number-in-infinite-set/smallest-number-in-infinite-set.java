@@ -15,8 +15,7 @@ class SmallestInfiniteSet {
             set.remove(min);
             return min;
         } else {
-            k++;
-            return k - 1;
+            return k++;
         }
 
     }
