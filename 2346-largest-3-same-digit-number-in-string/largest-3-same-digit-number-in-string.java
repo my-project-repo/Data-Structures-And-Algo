@@ -1,14 +1,12 @@
 class Solution {
     public String largestGoodInteger(String num) {
-        String res = "";
+        int max = -99;
         char[] ch = num.toCharArray();
         for (int i = 2; i < ch.length; i++) {
             if (ch[i] == ch[i - 1] && ch[i - 1] == ch[i - 2]) {
-                String dummy = "" + ch[i] + ch[i] + ch[i];
-                if (dummy.compareTo(res) > 0)
-                    res = dummy;
+                max = Math.max(max, ( ch[i] - '0' ) * 111 );
             }
         }
-        return res;
+        return (max == -99) ? "" : (max == 0) ? "000" : max+"";
     }
 }
