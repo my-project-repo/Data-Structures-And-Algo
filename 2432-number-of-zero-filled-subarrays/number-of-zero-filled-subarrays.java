@@ -6,7 +6,8 @@ class Solution {
                 count++;
             else
                 count = 0;
-            res += count;
+            if (count != 0)
+                res += count;
         }
         return res;
     }
