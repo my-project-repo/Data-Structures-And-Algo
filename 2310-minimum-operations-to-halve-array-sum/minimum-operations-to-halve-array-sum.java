@@ -1,19 +1,19 @@
 class Solution {
     public int halveArray(int[] nums) {
-        PriorityQueue<Double> pq = new PriorityQueue<>(Collections.reverseOrder());
-        int totalOperations = 0;
-        double sum = 0;
-        for (int num : nums) {
-            pq.add(num * 1.0);
-            sum += num;
+        Queue<Double> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        int res = 0;
+        double find = 0.0, sum = 0.0;
+        for (int i : nums) {
+            maxHeap.add(i * 1.0);
+            sum += i;
         }
-        double halveSum = sum / 2;
-        while (sum > halveSum) {
-            totalOperations++;
-            double num = pq.poll();
-            sum -= num / 2;
-            pq.add(num / 2);
+        find = sum / 2;
+        while (sum > find) {
+            res++;
+            double val = maxHeap.poll();
+            sum -= val / 2;
+            maxHeap.add(val / 2);
         }
-        return totalOperations;
+        return res;
     }
 }
