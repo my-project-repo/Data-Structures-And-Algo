@@ -9,16 +9,10 @@ class Solution {
         list.addAll(map.values());
         Collections.sort(list);
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) <= k) {
-                k -= list.get(i);
-                list.set(i, 0);
-            } else {
-                list.set(i, list.get(i) - k);
-                k = 0;
-            }
-            if (list.get(i) != 0)
-                count++;
+            count += list.get(i);
+            if (count > k)
+                return list.size() - i;
         }
-        return count;
+        return 0;
     }
 }
