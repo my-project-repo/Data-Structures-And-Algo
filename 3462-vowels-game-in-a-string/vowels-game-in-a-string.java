@@ -3,9 +3,9 @@ class Solution {
         int vowel = 0;
         for (char ch : s.toCharArray()) {
             if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
-                vowel++;
+                return true;
             }
         }
-        return vowel != 0;
+        return false;
     }
 }
