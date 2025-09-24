@@ -7,14 +7,13 @@ class Solution {
             nums[i] = nums[i] - rev(nums[i]);
         }
         for (int i : nums) {
-            if (map.containsKey(i)) {
-                res = (res % mod + map.get(i)) % mod;
-                map.put(i, map.get(i) + 1);
-            } else {
-                map.put(i, 1);
-            }
+            map.put(i, map.getOrDefault(i, 0) + 1);
         }
-        return (int) res;
+        for (int val : map.values()) {
+            if (val > 1)
+                res = (res % mod + fact(val - 1)) % mod;
+        }
+        return (int)res;
     }
 
     int rev(int n) {
@@ -24,5 +23,10 @@ class Solution {
             n /= 10;
         }
         return ans;
+    }
+    public long fact(int n) {
+        if (n == 1)
+            return 1;
+        return n + fact(n - 1);
     }
 }
