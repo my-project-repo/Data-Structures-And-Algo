@@ -1,23 +1,23 @@
 class Solution {
     public int calPoints(String[] operations) {
-        List<Integer> list = new ArrayList<>();
-        int res = 0;
-        for (String s : operations) {
-            if (s.equals("+")) {
-                int sum = list.getLast() + list.get(list.size() - 2);
-                list.add(sum);
-
-            } else if (s.equals("D")) {
-                list.add(list.getLast() * 2);
-
-            } else if (s.equals("C")) {
-                list.removeLast();
-
-            } else
-                list.add(Integer.parseInt(s));
+        int[] ops = new int[operations.length];
+        int ind = -1;
+        for (int i = 0; i < operations.length; i++) {
+            String op = operations[i];
+            if (op.equals("+")) {
+                ops[++ind] = ops[ind - 1] + ops[ind - 2];
+            } else if (op.equals("D")) {
+                ops[++ind] = 2 * ops[ind - 1];
+            } else if (op.equals("C")) {
+                ind--;
+            } else {
+                ops[++ind] = Integer.parseInt(op);
+            }
         }
-        for (int i : list)
-            res += i;
-        return res;
+        int sum = 0;
+        for (int i = 0; i <= ind; i++) {
+            sum += ops[i];
+        }
+        return sum;
     }
 }
