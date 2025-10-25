@@ -1,6 +1,6 @@
 class Solution {
     public int totalMoney(int n) {
-        int div = n / 7, rem = n - (div * 7), res = 0, k = 0, t = div + 1;
+        int div = n / 7, rem = n % 7, res = 0, k = 0, t = div + 1;
         while (div-- > 0) {
             res += 28 + k;
             k += 7;
