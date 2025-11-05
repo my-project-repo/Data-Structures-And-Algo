@@ -18,8 +18,7 @@ class Solution {
             char t = ch[idx];
             ch[idx] = ch[edx];
             ch[edx] = t;
-            idx++;
-            edx--;
+            idx++; edx--;
         }
         return new String(ch);
     }
