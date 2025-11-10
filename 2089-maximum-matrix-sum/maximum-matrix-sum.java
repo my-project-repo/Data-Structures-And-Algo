@@ -6,10 +6,10 @@ class Solution {
             for (int i : a) {
                 if (i < 0) {
                     neg++;
+                    i *= -1;
                 }
-                int val = Math.abs(i);
-                res += val;
-                min = Math.min(min, val);
+                res += i;
+                min = Math.min(min, i);
             }
         }
         return (neg % 2 == 0) ? res : res - min * 2;
