@@ -6,7 +6,7 @@ class Solution {
         for (char c : s.toCharArray()) {
             if (c == '1') {
                 count++;
-                ans = (ans + (count % MOD)) % MOD;
+                ans = (ans + count) % MOD;
             } else
                 count = 0;
         }
