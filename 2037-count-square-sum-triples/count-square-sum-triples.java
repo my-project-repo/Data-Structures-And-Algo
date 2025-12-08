@@ -1,14 +1,13 @@
 class Solution {
     public int countTriples(int n) {
-        int res = 0;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
-                int pro = (i * i) + (j * j);
-                int root = (int) Math.sqrt(pro);
-                if (root * root == pro && root <= n) 
-                res++;
+        var count = 0;
+        for (var a = 1; a < n; a++)
+            for (var b = 1; b < n; b++) {
+                var c = Math.sqrt(a * a + b * b);
+                if (c == (int) c && c <= n)
+                    count++;
             }
-        }
-        return res;
+        return count;
     }
+
 }
