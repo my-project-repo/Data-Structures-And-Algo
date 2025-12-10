@@ -22,13 +22,15 @@ class Solution {
     }
 
     void helper(TreeNode root, int val) {
-        if (root == null)
-            return;
-        if (root.val == val) {
+        if (root == null) return;
+        if (root.val == val)
+        {
             res = root;
             return;
         }
-        helper(root.left, val);
-        helper(root.right, val);
+        if (val < root.val)
+        helper(root.left,val);
+        else
+        helper(root.right,val);
     }
 }
