@@ -14,23 +14,10 @@
  * }
  */
 class Solution {
-    TreeNode res = null;
-
     public TreeNode searchBST(TreeNode root, int val) {
-        helper(root,val);
-        return res;
-    }
-
-    void helper(TreeNode root, int val) {
-        if (root == null) return;
-        if (root.val == val)
-        {
-            res = root;
-            return;
-        }
-        if (val < root.val)
-        helper(root.left,val);
-        else
-        helper(root.right,val);
+        if (root == null) return null;
+        if (root.val == val) return root;
+        if (root.val > val) return searchBST(root.left,val);
+        else return searchBST(root.right,val);
     }
 }
