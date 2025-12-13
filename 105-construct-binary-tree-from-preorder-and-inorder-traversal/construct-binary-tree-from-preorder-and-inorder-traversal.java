@@ -14,18 +14,23 @@
  * }
  */
 class Solution {
+    int idx = 0;
+    Map<Integer,Integer> map;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return builder(preorder,inorder,0,preorder.length-1,0,inorder.length-1);
+        map = new HashMap<>();
+        for (int i = 0;i<inorder.length;i++)
+        {
+            map.put(inorder[i],i);
+        }
+        return builder(preorder,0,inorder.length-1);
     }
-    TreeNode builder (int [] pre , int [] in , int idx1 , int edx1 , int idx2, int edx2)
+    TreeNode builder (int [] pre , int idxIn , int edxIn)
     {
-        if (idx1 > edx1) return null;
-        TreeNode root = new TreeNode(pre[idx1]);
-        int i = idx2;
-        while (in[i] != pre[idx1]) i++; // finding the inorder root
-        int size = i - idx2;
-        root.left = builder(pre,in,idx1+1,idx1+size,idx2,i-1);
-        root.right = builder(pre,in,idx1+size+1,edx1,i+1,edx2);
+        if (idxIn > edxIn) return null;
+        TreeNode root = new TreeNode (pre[idx++]);
+        int inIndex = map.get(root.val);
+        root.left = builder(pre,idxIn,inIndex-1);
+        root.right = builder(pre,inIndex+1,edxIn);
         return root;
     }
 }
