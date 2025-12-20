@@ -23,11 +23,12 @@ class Solution {
             int size = q.size();
             while (size-- > 0) {
                 TreeNode curr = q.poll();
-                sum += curr.val;
                 if (curr.left != null)
                     q.add(curr.left);
                 if (curr.right != null)
                     q.add(curr.right);
+                if (curr.left == null && curr.right == null)
+                    sum += curr.val;
             }
         }
         return sum;
