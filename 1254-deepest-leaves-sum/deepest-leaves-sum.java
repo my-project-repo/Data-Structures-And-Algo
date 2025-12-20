@@ -18,18 +18,16 @@ class Solution {
         int sum = 0;
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty())
-        {
+        while (!q.isEmpty()) {
             sum = 0;
             int size = q.size();
-            while (size --> 0)
-            {
+            while (size-- > 0) {
                 TreeNode curr = q.poll();
                 sum += curr.val;
                 if (curr.left != null)
-                q.add(curr.left);
+                    q.add(curr.left);
                 if (curr.right != null)
-                q.add(curr.right);
+                    q.add(curr.right);
             }
         }
         return sum;
