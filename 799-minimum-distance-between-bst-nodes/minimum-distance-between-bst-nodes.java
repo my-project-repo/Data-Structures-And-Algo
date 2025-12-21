@@ -16,6 +16,7 @@
 class Solution {
     Integer prev = null;
     int min = Integer.MAX_VALUE;
+
     public int minDiffInBST(TreeNode root) {
         dfs(root);
         return min;
@@ -25,9 +26,8 @@ class Solution {
         if (root == null)
             return;
         dfs(root.left);
-        if (prev != null)
-        {
-            min = Math.min(min,root.val - prev);
+        if (prev != null) {
+            min = Math.min(min, root.val - prev);
         }
         prev = root.val;
         dfs(root.right);
