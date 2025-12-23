@@ -16,7 +16,8 @@ class Solution {
                     flag = -1;
             }
             res.add(list);
-            if (flag == 0) break;
+            if (flag == 0)
+                break;
         }
         return res;
     }
