@@ -15,17 +15,18 @@
  */
 class Solution {
     public boolean evaluateTree(TreeNode root) {
-      return dfs(root) == 1;
+        return dfs(root) == 1;
     }
-    int dfs (TreeNode root)
-    {
-        if (root == null) return 0;
+
+    int dfs(TreeNode root) {
+        if (root == null)
+            return 0;
         if (root.left == null && root.right == null)
-        return root.val;
+            return root.val;
         if (root.val == 2)
-        return dfs(root.left) | dfs(root.right);
+            return dfs(root.left) | dfs(root.right);
         if (root.val == 3)
-        return dfs(root.left) & dfs(root.right);
+            return dfs(root.left) & dfs(root.right);
         return 1;
     }
 }
