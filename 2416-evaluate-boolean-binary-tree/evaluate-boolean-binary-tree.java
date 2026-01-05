@@ -21,12 +21,11 @@ class Solution {
     int dfs(TreeNode root) {
         if (root == null)
             return 0;
-        if (root.left == null && root.right == null)
+        else if (root.left == null && root.right == null)
             return root.val;
-        if (root.val == 2)
+        else if (root.val == 2)
             return dfs(root.left) | dfs(root.right);
-        if (root.val == 3)
+        else
             return dfs(root.left) & dfs(root.right);
-        return 1;
     }
 }
