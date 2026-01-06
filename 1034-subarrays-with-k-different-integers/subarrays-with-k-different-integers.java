@@ -1,6 +1,6 @@
 class Solution {
     public int subarraysWithKDistinct(int[] nums, int k) {
-        return window(nums,k) - window(nums,k-1);
+        return window(nums, k) - window(nums, k - 1);
     }
 
     int window(int[] nums, int k) {
@@ -10,13 +10,14 @@ class Solution {
             map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
             while (map.size() > k) {
                 int var = nums[l];
-                map.put(var, map.get(var) - 1);
-                if (map.get(var) == 0)
+                if (map.get(var) == 1)
                     map.remove(var);
+                else
+                    map.put(var, map.get(var) - 1);
                 l++;
 
             }
-                sum += r - l + 1;
+            sum += r - l + 1;
         }
         return sum;
     }
