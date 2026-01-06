@@ -17,8 +17,8 @@ class Solution {
         }
         return res;
     }
-    boolean isVowel (char ch)
-    {
-        return (ch == 'a' || ch == 'e' || ch == 'i'|| ch == 'o' || ch == 'u');
+
+    boolean isVowel(char ch) {
+        return (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u');
     }
 }
