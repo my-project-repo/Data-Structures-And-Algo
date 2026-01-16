@@ -1,28 +1,28 @@
 class Solution {
     public void sortColors(int[] nums) {
         // zero
-        int nonZero = 0, zero = 0, one, nonOne = 0;
-        for (int num : nums) {
-            if (num == 0) {
-                swap(zero, nonZero, nums);
-                zero++;
+        int zero = 0, nonZ = 0, one = 0, nonO = 0;
+        for (int i : nums) {
+            if (i == 0) {
+                int temp = nums[zero];
+                nums[zero] = nums[nonZ];
+                nums[nonZ] = temp;
+                nonZ++; // increasing index
             }
-            nonZero++;
+            zero++; // index pointing at zero
         }
-        // one
-        one = zero;
-        for (int num : nums) {
-            if (num == 1) {
-                swap(one, nonOne, nums);
-                one++;
+         nonO = nonZ;
+        for (int i : nums)
+        {
+            if (i == 1)
+            {
+                int temp = nums[one];
+                nums[one] = nums[nonO];
+                nums[nonO] = temp;
+                nonO++;
             }
-            nonOne++;
+            one++;
         }
-    }
-
-    void swap(int n, int n2, int[] arr) {
-        int temp = arr[n];
-        arr[n] = arr[n2];
-        arr[n2] = temp;
+       
     }
 }
