@@ -1,0 +1,11 @@
+class Solution {
+    public int countSeniors(String[] details) {
+        int res = 0;
+        for (String s : details)
+        {
+            int val = Integer.parseInt(s.substring(11,13));
+            if (val > 60) res++;
+        }
+        return res;
+    }
+}
