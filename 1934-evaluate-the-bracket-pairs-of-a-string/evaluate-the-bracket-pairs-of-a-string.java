@@ -2,7 +2,7 @@ class Solution {
     public String evaluate(String s, List<List<String>> knowledge) {
         int count = 0;
         StringBuilder str = new StringBuilder();
-        String st = "";
+        StringBuilder st = new StringBuilder();
         Map<String,String> map = new HashMap<>();
         for (List<String> list : knowledge)
         {
@@ -14,13 +14,13 @@ class Solution {
             count = 1;
             else if (ch == ')')
             {
-                str.append(map.getOrDefault(st,"?"));
+                str.append(map.getOrDefault(st.toString(),"?"));
                 count = 0;
-                st = "";
+                st.setLength(0);
             }
             else if (count == 1)
             {
-                st += ch;
+                st.append(ch);
             }
             else
             str.append(ch);
