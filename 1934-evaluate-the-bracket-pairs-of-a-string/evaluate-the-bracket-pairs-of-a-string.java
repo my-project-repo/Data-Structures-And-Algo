@@ -1,6 +1,6 @@
 class Solution {
     public String evaluate(String s, List<List<String>> knowledge) {
-        int count = 0;
+        boolean flag = false;
         StringBuilder str = new StringBuilder();
         StringBuilder st = new StringBuilder();
         Map<String,String> map = new HashMap<>();
@@ -11,14 +11,14 @@ class Solution {
         for (char ch : s.toCharArray())
         {
             if (ch == '(')
-            count = 1;
+            flag = true;
             else if (ch == ')')
             {
                 str.append(map.getOrDefault(st.toString(),"?"));
-                count = 0;
+                flag = false;
                 st.setLength(0);
             }
-            else if (count == 1)
+            else if (flag)
             {
                 st.append(ch);
             }
