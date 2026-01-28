@@ -5,7 +5,7 @@ class Solution {
     }
     int rec (int n, int [] arr)
     {
-        if (n == 0) return 0;
+        if (n < 4) return n;
         if (arr[n] != 0) return arr[n];
         for (int i = 1; i * i <= n;i++)
         {
