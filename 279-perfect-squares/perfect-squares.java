@@ -10,8 +10,7 @@ class Solution {
         for (int i = 1; i * i <= n;i++)
         {
             min = Math.min(min,1+rec(n-(i*i),arr));
-            arr[n] = min;
         }
-        return arr[n];
+        return arr[n] = min;
     }
 }
