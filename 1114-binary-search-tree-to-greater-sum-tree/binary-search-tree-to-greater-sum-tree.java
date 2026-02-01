@@ -14,17 +14,19 @@
  * }
  */
 class Solution {
-    int prev = 0;
+    int var = 0;
+
     public TreeNode bstToGst(TreeNode root) {
         dfs(root);
         return root;
     }
-    void dfs (TreeNode root)
-    {
-        if (root == null) return;
-        dfs(root.right);
-        root.val += prev;
-        prev = root.val;
-        dfs(root.left);
+
+    void dfs(TreeNode root) {
+       if (root == null) return;
+       dfs(root.right);
+       if (var != 0)
+       root.val += var;
+       var = root.val;
+       dfs(root.left);
     }
 }
