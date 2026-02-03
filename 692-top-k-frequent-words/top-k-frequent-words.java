@@ -5,7 +5,7 @@ class Solution {
         PriorityQueue<Pair> q = new PriorityQueue<>((a, b) -> 
         {
             if (a.freq != b.freq) {
-                return a.freq - b.freq;
+                return Integer.compare(a.freq,b.freq);
             } else {
                 return b.word.compareTo(a.word);
             }
