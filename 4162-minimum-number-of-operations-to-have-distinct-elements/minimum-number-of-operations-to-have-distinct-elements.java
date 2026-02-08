@@ -1,11 +1,11 @@
 class Solution {
     public int minOperations(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        int[] freq = new int[100001];
         int i;
         for (i = nums.length - 1; i >= 0; i--) {
-            if (set.contains(nums[i]))
+            if (freq[nums[i]] == 1)
                 break;
-            set.add(nums[i]);
+            freq[nums[i]] = 1;
         }
         return (i+3)/3;
     }
