@@ -16,24 +16,23 @@
 class Solution {
     public TreeNode balanceBST(TreeNode root) {
         List<TreeNode> list = new ArrayList<>();
-        dfs(list,root);
-        return build (list,0,list.size()-1);
-        
+        add(root,list);
+        return build(0,list.size()-1,list);
     }
-    void dfs (List<TreeNode> list, TreeNode root)
+    void add (TreeNode root , List<TreeNode> list)
     {
         if (root == null) return;
-        dfs(list,root.left);
+        add(root.left,list);
         list.add(root);
-        dfs(list,root.right);
+        add(root.right,list);
     }
-    TreeNode build (List<TreeNode> list , int start , int end)
+    TreeNode build (int start , int end , List<TreeNode> list)
     {
         if (start > end) return null;
-        int mid = (end + start) /  2;
-        TreeNode curr = list.get(mid);
-        curr.left = build(list,start,mid-1);
-        curr.right = build(list,mid+1,end);
-        return curr;
+        int mid = (end + start) / 2;
+        TreeNode m = list.get(mid);
+        m.left = build(start,mid-1,list);
+        m.right = build(mid+1,end,list);
+        return m;
     }
 }
