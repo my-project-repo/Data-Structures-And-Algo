@@ -2,6 +2,7 @@ class Solution {
     public int longestBalanced(int[] nums) {
         int max = 0;
         for (int i = 0; i < nums.length; i++) {
+            if (max > nums.length-i) break;
             HashSet<Integer> even = new HashSet<>();
             HashSet<Integer> odd = new HashSet<>();
             for (int j = i; j < nums.length; j++) {
