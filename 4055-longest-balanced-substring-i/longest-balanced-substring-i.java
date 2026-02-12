@@ -2,7 +2,7 @@ class Solution {
     public int longestBalanced(String s) {
         int max = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (max > s.length()-i) break;
+            if (max > s.length() - i) break;
             int[] freq = new int[26];
             for (int j = i; j < s.length(); j++) {
                 char ch = s.charAt(j);
@@ -13,15 +13,15 @@ class Solution {
         }
         return max;
     }
-    boolean isBalanced (int [] freq)
-    {
+
+    boolean isBalanced(int[] freq) {
         int prev = 0;
-        for (int i = 0;i<26;i++)
-        {
-            if (freq[i] == 0) continue;
-            if (prev != 0)
-            {
-                if (prev != freq[i]) return false;
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] == 0)
+                continue;
+            if (prev != 0) {
+                if (prev != freq[i])
+                    return false;
             }
             prev = freq[i];
         }
