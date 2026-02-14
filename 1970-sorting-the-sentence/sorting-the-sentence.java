@@ -1,19 +1,20 @@
 class Solution {
     public String sortSentence(String s) {
-        String [] words = s.split(" ");
-        StringBuilder str = new StringBuilder();
-        Arrays.sort(words,(a,b)->{
-            int first = a.charAt(a.length()-1) - '0';
-            int second = b.charAt(b.length()-1) - '0';
-            return first - second;
-        });
-
-        for (String word : words)
-        {
-            str.append(word.substring(0,word.length()-1)+" ");
-        }
-
-        return str.toString().trim();
+      String [] arr = new String [9];
+      String [] words = s.split(" ");
+      StringBuilder str = new StringBuilder();
+      for (String word : words)
+      {
+        int n = word.length();
+        int idx = word.charAt(n-1) - '0';
+        arr[idx-1] = word.substring(0,n-1);
+      }
+      for (String word : arr)
+      {
+        if (word == null) break;
+        str.append(word+" ");
+      }
+      return str.toString().trim();
        
     }
 }
