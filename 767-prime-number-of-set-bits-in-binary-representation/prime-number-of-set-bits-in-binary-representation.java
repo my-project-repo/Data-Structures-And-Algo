@@ -1,18 +1,18 @@
 class Solution {
     public int countPrimeSetBits(int left, int right) {
         int res = 0;
-        for (;left<=right;left++)
+        for (int i = left;i<=right;i++)
         {
-            if (isPrime(Integer.bitCount(left)))
-            res++;
+            int count = Integer.bitCount(i);
+            if (isPrime(count)) res++;
         }
         return res;
     }
-
-    boolean isPrime(int n) {
-        if (n <= 1)
-            return false;
-        for (int i = 2; i * i <= n; i++) {
+    boolean isPrime (int n)
+    {
+        if (n <= 1) return false;
+        for (int i = 2 ; i * i <= n;i++)
+        {
             if (n % i == 0) return false;
         }
         return true;
