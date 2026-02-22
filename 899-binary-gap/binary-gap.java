@@ -1,6 +1,6 @@
 class Solution {
     public int binaryGap(int n) {
-        int count = 0 , val = 0,max = 0;
+        int count = 0, val = 0, max = 0;
         while (n > 0) {
             int dig = n & 1;
             if (dig == 1) {
@@ -13,9 +13,9 @@ class Solution {
 
             }
             if (count == 1)
-              val++;
+                val++;
 
-              n = n >> 1;
+            n = n >> 1;
         }
         return max;
     }
