@@ -2,7 +2,7 @@ class Solution {
     public boolean hasAllCodes(String s, int k) {
         Set<String> set = new HashSet<>();
         int count = 1 << k;
-        if (s.length() < count ) return false;
+        if (s.length() < count ) return false; // optimisation
         for (int i = 0; i <= s.length() - k; i++) {
             String val = s.substring(i, i + k);
             if (!set.contains(val)) {
