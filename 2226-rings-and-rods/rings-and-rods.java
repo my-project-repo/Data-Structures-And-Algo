@@ -16,10 +16,9 @@ class Solution {
                     g[idx]++;
             }
         }
-        for (int i = 0;i<10;i++)
-        {
+        for (int i = 0; i < 10; i++) {
             if (b[i] >= 1 && r[i] >= 1 && g[i] >= 1)
-            res++;
+                res++;
         }
         return res;
     }
