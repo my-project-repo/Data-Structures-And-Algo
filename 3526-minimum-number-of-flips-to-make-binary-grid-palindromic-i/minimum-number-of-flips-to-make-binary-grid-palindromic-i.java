@@ -1,16 +1,13 @@
 class Solution {
     public int minFlips(int[][] grid) {
-        int res = 0, counter = 0;
+        int row = 0, col = 0;
         // row
         for (int [] arr : grid)
         {
             int idx = 0, edx = arr.length-1;
             while (idx < edx)
             {
-                if (arr[idx] != arr[edx])
-                {
-                    counter++;
-                }
+                if (arr[idx] != arr[edx]) row++;
                 idx++; edx--;
             }
         }
@@ -21,13 +18,12 @@ class Solution {
             int idx = 0, edx = grid.length-1;
             while (idx < edx)
             {
-                if (grid[idx][i] != grid[edx][i])
-                res++;
+                if (grid[idx][i] != grid[edx][i]) col++;
                 idx++; edx--;
             }
 
         }
-        return Math.min(res,counter);
+        return Math.min(row,col);
 
     }
 }
