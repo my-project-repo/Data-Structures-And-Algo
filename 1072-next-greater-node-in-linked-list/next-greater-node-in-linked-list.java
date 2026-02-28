@@ -26,7 +26,7 @@ class Solution {
         while (prev != null)
         {
             int val = prev.val;
-            while (!st.isEmpty() && st.peek() <= val)
+            while (!st.isEmpty() && st.peek() <= val) // monotonous stack
             {
                 st.pop();
             }
