@@ -7,6 +7,8 @@ class Solution {
         for (int i : nums)
             s += i;
         dp = new int[nums.length][s * 2 + 1];
+        for (int[] arr : dp)
+            Arrays.fill(arr, -1);
         return fun(0, target, nums, nums.length);
     }
 
@@ -15,7 +17,7 @@ class Solution {
             return 0;
         if (i == n)
             return sum == 0 ? 1 : 0;
-        if (dp[i][s + sum] != 0)
+        if (dp[i][s + sum] != -1)
             return dp[i][s + sum];
         int res = fun(i + 1, sum + arr[i], arr, n) + fun(i + 1, sum - (arr[i]), arr, n);
         dp[i][s + sum] = res;
