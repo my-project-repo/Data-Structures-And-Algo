@@ -6,7 +6,7 @@ class Solution {
         s = 0;
         for (int i : nums)
             s += i;
-        dp = new int[nums.length][s * 2 + 1];
+        dp = new int[nums.length][s * 2 + 2];
         for (int[] arr : dp)
             Arrays.fill(arr, -1);
         return fun(0, target, nums, nums.length);
