@@ -2,7 +2,7 @@ class Solution {
     public char findKthBit(int n, int k) {
         if (n <= 4)
             return "011100110110001".charAt(k-1);
-        // dp
+        // dp 110 -> 
         String[] generate = new String[n + 1];
         generate[4] = "011100110110001";
         for (int i = 5; i <= n; i++) {
