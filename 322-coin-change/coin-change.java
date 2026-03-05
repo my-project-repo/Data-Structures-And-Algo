@@ -8,6 +8,7 @@ class Solution {
     }
 
     int minDif(int idx, int left, int[] arr, int[][] dp) {
+        if (left == 0 ) return 0;
         if (idx == arr.length) {
             return left == 0 ? 0 : Integer.MAX_VALUE;
         }
