@@ -1,25 +1,21 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
         int[][] dp = new int[coins.length + 1][amount + 1];
-        for (int[] a : dp)
-            Arrays.fill(a, -1);
-            int res = minDif(0, amount, coins, dp);
-        return res == Integer.MAX_VALUE ? -1 : res ;
-    }
-
-    int minDif(int idx, int left, int[] arr, int[][] dp) {
-        if (left == 0 ) return 0;
-        if (idx == arr.length) {
-            return left == 0 ? 0 : Integer.MAX_VALUE;
+        for (int i = 0; i < dp.length; i++) {
+            dp[i][0] = 0;
         }
-        if (arr[idx] > left)
-            return minDif(idx + 1, left, arr, dp);
-        if (dp[idx][left] != -1)
-            return dp[idx][left];
-        int include = minDif(idx, left - arr[idx], arr, dp);
-        if (include != Integer.MAX_VALUE)
-            include += 1;
-        int exclude = minDif(idx + 1, left, arr, dp);
-        return dp[idx][left] = Math.min(include, exclude);
+        for (int i = 0; i < dp[0].length; i++) {
+            dp[0][i] = Integer.MAX_VALUE - 1;
+        }
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                if (coins[i - 1] <= j) {
+                    dp[i][j] = Math.min(1 + dp[i][j - coins[i - 1]], dp[i - 1][j]);
+                } else
+                    dp[i][j] = dp[i - 1][j];
+            }
+        }
+        int val = dp[coins.length][amount];
+        return val >= Integer.MAX_VALUE-1 ? -1 :  val ;
     }
 }
