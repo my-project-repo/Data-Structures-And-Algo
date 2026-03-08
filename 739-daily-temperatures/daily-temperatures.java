@@ -7,7 +7,8 @@ class Solution {
         for (int i = n - 1; i >= 0; i--) {
             while (top > -1 && temperatures[i] >= temperatures[stack[top]])
                 top--;
-            if (top != -1) res[i] = stack[top] - i;
+            if (top != -1)
+                res[i] = stack[top] - i;
             stack[++top] = i;
         }
         return res;
