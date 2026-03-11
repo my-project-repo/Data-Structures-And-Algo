@@ -5,7 +5,7 @@ class Solution {
         while (n > 0)
         {
             if ( (n & 1 ) == 0)
-            res += (int) Math.pow(2,index);
+            res += 1 << index;
             n >>= 1;
             index++;
         }
