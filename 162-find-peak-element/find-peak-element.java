@@ -1,14 +1,15 @@
 class Solution {
     public int findPeakElement(int[] nums) {
-        // binary Search Approach
-        int start = 0, end = nums.length - 1;
-        while (start < end) {
-            int mid = start + (end - start) / 2;
-            if (nums[mid] > nums[mid + 1]) {
-                end = mid;
-            } else
-                start = mid + 1;
+        int idx = 0, edx = nums.length - 1;
+        while (idx <= edx) {
+            int mid = idx + (edx - idx) / 2;
+            if (idx == edx)
+                return mid;
+            else if (nums[mid] < nums[mid + 1])
+                idx = mid + 1;
+            else
+                edx = mid;
         }
-        return end;
+        return -1;
     }
 }
