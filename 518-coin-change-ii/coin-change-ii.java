@@ -12,8 +12,7 @@ class Solution {
             return 0;
         if (dp[idx][target] != -1)
             return dp[idx][target];
-        if (nums[idx] > target)
-            return coin(idx + 1, nums, target,dp);
+       
         int include = coin(idx, nums, target - nums[idx],dp);
         int exclude = coin(idx + 1, nums, target,dp);
         return dp[idx][target] = include + exclude;
