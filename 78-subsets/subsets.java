@@ -1,18 +1,21 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        solver(list, new ArrayList<>(), 0, nums);
-        return list;
+        List<List<Integer>> res = new ArrayList<>();
+        func(0,nums,new LinkedList<>(), res);
+        return res;
+        
     }
-
-    void solver(List<List<Integer>> list, List<Integer> res, int idx, int[] arr) {
-        if (idx == arr.length) {
-            list.add(new ArrayList<>(res));
+    void func (int idx , int [] nums , List<Integer> list , List<List<Integer>> ans)
+    {
+        if (idx == nums.length)
+        {
+            ans.add(new LinkedList<>(list));
             return;
         }
-        res.add(arr[idx]);
-        solver(list, res, idx + 1, arr); // include
-        res.removeLast();
-        solver(list, res, idx + 1, arr); // exclude
+
+        list.add(nums[idx]); 
+        func(idx+1,nums,list,ans); // include;
+        list.removeLast();
+        func(idx+1,nums,list,ans); // exclude
     }
 }
