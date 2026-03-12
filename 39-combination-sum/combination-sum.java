@@ -11,12 +11,18 @@ class Solution {
             res.add(new ArrayList<>(list));
             return;
         }
-        if (idx >= nums.length || target < 0) return;
+        if (idx >= nums.length || target < 0)
+            return;
 
-        list.add(nums[idx]); // include;
-        sum(idx, nums, target - nums[idx], list, res);
-        list.removeLast(); //exclude
-        sum(idx + 1, nums, target, list, res);
+        if (nums[idx] > target)
+            sum(idx + 1, nums, target, list, res);
+        else {
+
+            list.add(nums[idx]); // include;
+            sum(idx, nums, target - nums[idx], list, res);
+            list.removeLast(); //exclude
+            sum(idx + 1, nums, target, list, res);
+        }
 
     }
 }
