@@ -1,23 +1,18 @@
 class Solution {
     public int change(int amount, int[] coins) {
         int[][] dp = new int[coins.length + 1][amount + 1];
-        for (int[] d : dp)
-            Arrays.fill(d, -1);
-        return coin(0, coins, amount, dp);
-    }
+        for (int i = 0; i < dp.length; i++)
+            dp[i][0] = 1;
 
-    int coin(int idx, int[] nums, int target, int[][] dp) {
-        if (target == 0)
-            return 1;
-        if (idx >= nums.length || target < 0)
-            return 0;
-        if (dp[idx][target] != -1)
-            return dp[idx][target];
-        int include = 0;
-        if (nums[idx] <= target) {
-            include = coin(idx, nums, target - nums[idx], dp);
+        for (int i = 1; i < dp.length; i++) {
+            int curr = coins[i - 1];
+            for (int j = 1; j < dp[0].length; j++) {
+                if (curr <= j) {
+                    dp[i][j] = dp[i][j - curr] + dp[i-1][j];
+                } else
+                dp[i][j] = dp[i - 1][j];
+            }
         }
-        int exclude = coin(idx + 1, nums, target, dp);
-        return dp[idx][target] = include + exclude;
+        return dp[coins.length][amount];
     }
 }
