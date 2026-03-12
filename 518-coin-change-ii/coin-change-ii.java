@@ -8,7 +8,7 @@ class Solution {
     int coin(int idx, int[] nums, int target, int[][] dp) {
         if (target == 0)
             return 1;
-        if (idx >= nums.length)
+        if (idx >= nums.length || target < 0)
             return 0;
         if (dp[idx][target] != -1)
             return dp[idx][target];
