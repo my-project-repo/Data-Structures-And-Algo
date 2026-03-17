@@ -18,8 +18,12 @@ class Solution {
     }
 
     int gcd(int x, int y) {
-        if (y == 0)
-            return x;
-        return gcd(y, x % y);
+        while (y > 0)
+        {
+            int t = y;
+            y = x % y;
+            x = t;
+        }
+        return x;
     }
 }
