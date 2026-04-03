@@ -14,28 +14,25 @@
  * }
  */
 class Solution {
-    List<Integer> list = new ArrayList<>();
-
+    List<Integer> l = new ArrayList<>();
     public boolean findTarget(TreeNode root, int k) {
         dfs(root);
-        int idx = 0, edx = list.size() - 1;
-        while (idx < edx) {
-            int sum = list.get(idx) + list.get(edx);
-            if (sum == k)
-                return true;
-            else if (sum < k)
-                idx++;
-            else
-                edx--;
+        int idx = 0 , edx = l.size()-1;
+        while (idx < edx)
+        {
+            int sum = l.get(idx) + l.get(edx);
+            if (sum == k) return true;
+            else if (sum > k)
+            edx--;
+            else idx++;
         }
         return false;
     }
-
-    void dfs(TreeNode root) {
-        if (root == null)
-            return;
+    void dfs (TreeNode root)
+    {
+        if (root == null) return;
         dfs(root.left);
-        list.add(root.val);
+        l.add(root.val);
         dfs(root.right);
     }
 }
