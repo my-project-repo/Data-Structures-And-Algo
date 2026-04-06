@@ -1,21 +1,21 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[][] dp = new int[coins.length + 1][amount + 1];
-        for (int i = 0; i < dp.length; i++) {
-            dp[i][0] = 0;
-        }
-        for (int i = 0; i < dp[0].length; i++) {
-            dp[0][i] = Integer.MAX_VALUE - 1;
-        }
-        for (int i = 1; i < dp.length; i++) {
-            for (int j = 1; j < dp[0].length; j++) {
-                if (coins[i - 1] <= j) {
-                    dp[i][j] = Math.min(1 + dp[i][j - coins[i - 1]], dp[i - 1][j]);
-                } else
-                    dp[i][j] = dp[i - 1][j];
-            }
-        }
-        int val = dp[coins.length][amount];
-        return val >= Integer.MAX_VALUE-1 ? -1 :  val ;
+        int m = coins.length;
+        int [][] dp = new int[m+1][amount+1];
+        for (int [] d : dp) Arrays.fill(d,-1);
+        int res =  knap(0,coins,amount,dp);
+        return res == Integer.MAX_VALUE-1 ? -1 : res;
+    }
+    int knap (int i , int [] coins , int amount , int [][] dp)
+    {
+            if (amount == 0) return 0;
+    if (i >= coins.length) return Integer.MAX_VALUE-1;
+        else if (dp[i][amount] != -1) return dp[i][amount];
+        else if (coins[i] <= amount)
+        {
+            return dp[i][amount] = Math.min(1+knap(i,coins,amount-coins[i],dp), knap(i+1,coins,amount,dp));
+        } else
+        return dp[i][amount] = knap(i+1,coins,amount,dp);
+        
     }
 }
