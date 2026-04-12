@@ -1,17 +1,19 @@
 class Solution {
     public int minOperations(int[] nums, int[] numsDivide) {
-        int gcd = numsDivide[0], count = 0;
+        int gcd = numsDivide[0], count = 0 , min = Integer.MAX_VALUE;
         for (int i = 1; i < numsDivide.length; i++) {
             gcd = g(gcd, numsDivide[i]);
         }
-        Arrays.sort(nums);
-        for (int i : nums) {
-            if (gcd % i == 0)
-                return count;
-            else
-                count++;
+        for (int i : nums)
+        {
+            if (gcd % i == 0) min = Math.min(min,i);
         }
-        return -1;
+        if (min == Integer.MAX_VALUE) return -1;
+        for (int i : nums)
+        {
+            if (i < min) count++;
+        }
+        return count;
     }
 
     int g(int x, int y) {
