@@ -13,9 +13,6 @@ class Solution {
     }
 
     int dfs(int i, int j, int[][] mat) {
-        if (i >= mat.length || j >= mat[0].length || i < 0 || j < 0)
-            return 0;
-
         if (dp[i][j] != 0)
             return dp[i][j];
 
