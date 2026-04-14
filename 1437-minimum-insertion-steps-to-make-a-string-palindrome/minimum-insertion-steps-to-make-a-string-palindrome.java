@@ -4,9 +4,8 @@ class Solution {
         int [][] dp = new int [n+1][n+1];
         char [] a = new char[n];
         char [] b = new char[n];
-        for (int i = 0;i<n;i++)
+        for (char ch : s.toCharArray())
         {
-            char ch = s.charAt(i);
             a[p] = ch;
             b[p] = ch;
             p++;
