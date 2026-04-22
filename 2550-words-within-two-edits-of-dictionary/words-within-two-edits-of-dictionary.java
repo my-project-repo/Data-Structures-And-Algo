@@ -1,19 +1,27 @@
 class Solution {
     public List<String> twoEditWords(String[] queries, String[] dictionary) {
-        List<String> res = new ArrayList<>();
-        for (String word : queries) {
-            for (String d : dictionary) {
-                int c = 0;
-                for (int i = 0; i < word.length(); i++) {
-                    if (word.charAt(i) != d.charAt(i))
-                        c++;
+        List<String> ans = new ArrayList<>();
+        for(int i = 0; i < queries.length; i++){
+            String str = queries[i];
+            
+            for(int j = 0; j < dictionary.length; j++){
+                String s = dictionary[j];
+                int count = 0;
+                for(int k = 0; k < s.length(); k++){
+                    if(str.charAt(k) != s.charAt(k)){
+                        count++;
+                    }
+                    if(count > 2){
+                        break;
+                    }
                 }
-                if (c <= 2) {
-                    res.add(word);
+                if(count <= 2){
+                    ans.add(str);
                     break;
                 }
+                count = 0;
             }
         }
-        return res;
+        return ans;
     }
 }
