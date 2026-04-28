@@ -8,17 +8,15 @@ class Solution {
             }
         }
 
+        int mod = arr[0] % x;
+        for (int val : arr) {
+            if (val % x != mod) return -1;
+        }
+
         Arrays.sort(arr);
         mid = arr[arr.length / 2];
         
-        for (int i : arr) {
-            if (i == mid)
-                continue;
-            int val = Math.abs(i - mid);
-            if (val % x != 0)
-                return -1;
-            res += (val / x);
-        }
+        for (int i : arr) res += (Math.abs(i - mid) / x);
 
         return res;
     }
