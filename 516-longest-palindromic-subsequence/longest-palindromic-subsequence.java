@@ -11,21 +11,17 @@ class Solution {
             idx++;
             edx--;
         }
-        for (int[] d : dp)
-            Arrays.fill(d, -1);
-        return lcs(0, 0, a, b, dp);
 
-    }
+        //dp
 
-    int lcs(int i, int j, char[] a, char[] b, int[][] dp) {
-        if (i >= a.length || j >= b.length)
-            return 0;
-        else if (dp[i][j] != -1)
-            return dp[i][j];
-        else if (a[i] == b[j])
-            return dp[i][j] = 1 + lcs(i + 1, j + 1, a, b, dp);
-        else {
-            return dp[i][j] = Math.max(lcs(i + 1, j, a, b, dp), lcs(i, j + 1, a, b, dp));
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                if (a[i - 1] == b[j - 1])
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                else
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+            }
         }
+        return dp[a.length][a.length];
     }
 }
