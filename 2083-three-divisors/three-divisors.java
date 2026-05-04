@@ -1,10 +1,15 @@
 class Solution {
     public boolean isThree(int n) {
-        int c = 0;
-        for (int i = 2;i <= n/2; i++) {
-            if (n % i == 0)
-                c++;
+        int root = (int) Math.sqrt(n);
+        if (root * root != n) {
+            return false;
         }
-        return c == 1;
+        for (int i = 2; i <= Math.sqrt(root); i++) {
+            if (root % i == 0) {
+                return false;
+            }
+        }
+
+        return root > 1;
     }
 }
