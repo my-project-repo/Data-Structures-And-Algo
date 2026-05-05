@@ -10,8 +10,8 @@ class Solution {
             deque.add(r);
 
             if (r - l + 1 == k) {
-                ans[p++] = nums[deque.peek()];
-                if (nums[l] == nums[deque.peek()])
+                ans[p++] = nums[deque.peekFirst()];
+                if (nums[l] == nums[deque.peekFirst()])
                     deque.poll();
                 l++;
             }
