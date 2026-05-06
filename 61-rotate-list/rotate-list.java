@@ -13,25 +13,22 @@ class Solution {
         if (head == null || head.next == null || k == 0)
             return head;
         int size = 0, n = 0;
-        ListNode temp = head;
-        while (temp != null) {
+        ListNode tail = head;
+        while (tail.next != null) {
             size++;
-            temp = temp.next;
+            tail = tail.next;
         }
+        size++;
         n = k % size;
-        if (n == 0)
-            return head;
-        temp = head;
+        if (n == 0) return head;
+        ListNode temp = head;
         for (int i = 0; i < size - n - 1; i++) {
             temp = temp.next;
         }
 
         ListNode head_2 = temp.next;
-        ListNode dummy = head_2;
         temp.next = null;
-        while (dummy.next != null)
-            dummy = dummy.next;
-        dummy.next = head;
+        tail.next = head;
         return head_2;
 
     }
