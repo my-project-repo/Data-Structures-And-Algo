@@ -10,11 +10,14 @@ class Solution {
             st.addLast(r);
             right += R[r];
             val = C[st.peekFirst()] + (long) (r - left + 1) * right;
-            while (!st.isEmpty() && C[st.peekFirst()] + (long) (r - left + 1) * right > budget) {
+            while (val > budget) {
                 if (st.peekFirst() == left)
                     st.pollFirst();
                 right -= R[left];
                 left++;
+                if (!st.isEmpty())
+                    val = C[st.peekFirst()] + (long) (r - left + 1) * right;
+                    else break;
             }
 
             max = Math.max(max, r - left + 1);
