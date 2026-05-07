@@ -21,7 +21,6 @@ class Solution {
             }
 
         }
-        System.out.println(min);
         return min == Integer.MAX_VALUE ? "" : s.substring(st,st+min);
     }
 
