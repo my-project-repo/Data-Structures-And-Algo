@@ -21,7 +21,7 @@ class Solution {
             return false;
         long hours = 0;
         for (int i : piles) {
-            hours += (int) Math.ceil(i * 1.0 / k);
+            hours += (int) (i + k - 1) / k;
         }
 
         return hours <= h;
