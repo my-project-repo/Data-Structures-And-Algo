@@ -1,5 +1,6 @@
 class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
+        if (s.length() < 10) return new ArrayList<String>();
         Set<String> set = new HashSet<>();
         Set<String> seen = new HashSet<>();
         int l = 0;
