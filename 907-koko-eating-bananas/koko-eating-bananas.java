@@ -19,7 +19,7 @@ class Solution {
     boolean isPossible(int[] piles, int k, int h) {
         if (k <= 0)
             return false;
-        int hours = 0;
+        long hours = 0;
         for (int i : piles) {
             hours += (int) Math.ceil(i * 1.0 / k);
         }
