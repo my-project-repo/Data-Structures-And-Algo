@@ -28,6 +28,7 @@ class Solution {
                 k = cap;
             }
             k -= i;
+            if (day > days) return false;
         }
         return day <= days;
     }
