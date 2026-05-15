@@ -9,7 +9,7 @@ class Solution {
                 continue;
             else if (freq[i] == 1)
                 c++;
-            else if (freq[i] % 2 != 0 || freq[i] != 2)
+            else if (freq[i] > 2)
                 return false;
             else
                 d++;
