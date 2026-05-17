@@ -12,7 +12,6 @@ class Solution {
             isVisited[start] = true;
             boolean x = search(arr, start - arr[start],isVisited);
             boolean y = search(arr, start + arr[start],isVisited);
-            isVisited[start] = false;
         return x || y ;
     }
 }
