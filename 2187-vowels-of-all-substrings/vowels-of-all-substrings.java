@@ -4,7 +4,7 @@ class Solution {
         int N = word.length();
         for (int i = 0; i < N; i++) {
             if (isVowel(word.charAt(i))) {
-                res += (N - i) * (long) (i + 1);
+                res += (long)(N - i) * (i + 1);
             }
         }
 
