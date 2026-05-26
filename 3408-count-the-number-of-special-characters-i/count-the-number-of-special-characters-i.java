@@ -1,17 +1,18 @@
 class Solution {
     public int numberOfSpecialChars(String word) {
-        boolean[][] freq = new boolean[26][2];
+        boolean[] upper = new boolean[26];
+        boolean[] lower = new boolean[26];
         int res = 0;
         for (char ch : word.toCharArray()) {
             if (Character.isUpperCase(ch)) {
-                freq[ch - 'A'][0] = true;
+                upper[ch - 'A'] = true;
             } else
-                freq[ch - 'a'][1] = true;
+                lower[ch - 'a'] = true;
         }
 
-        for (int i = 0;i<26;i++)
-        {
-            if (freq[i][0] && freq[i][1]) res++;
+        for (int i = 0; i < 26; i++) {
+            if (upper[i] && lower[i])
+                res++;
         }
 
         return res;
