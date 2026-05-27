@@ -4,7 +4,8 @@ class Solution {
         boolean[] lower = new boolean[26];
         boolean[] invalid = new boolean[26];
         int res = 0;
-        for (char ch : word.toCharArray()) {
+        for (int i = 0;i<word.length();i++) {
+            char ch = word.charAt(i);
             if (Character.isUpperCase(ch)) {
                 int idx = ch - 'A';
                 upper[idx] = true;
