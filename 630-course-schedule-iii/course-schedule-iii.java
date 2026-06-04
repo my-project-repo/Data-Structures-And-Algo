@@ -8,7 +8,7 @@ class Solution {
             time += course[0];
             heap.add(course[0]);
             res++;
-            if (time > course[1] && !heap.isEmpty()) {
+            if (time > course[1]) {
                 time -= heap.poll();
                 res--;
             }
