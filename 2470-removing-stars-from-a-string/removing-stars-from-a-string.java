@@ -1,6 +1,5 @@
 class Solution {
     public String removeStars(String s) {
-        StringBuilder str = new StringBuilder();
         int n = s.length(), top = -1;
         char[] st = new char[n];
         for (int i = 0; i < s.length(); i++) {
@@ -12,9 +11,6 @@ class Solution {
             else
                 st[++top] = ch;
         }
-        for (int i = 0; i <= top; i++) {
-            str.append(st[i]);
-        }
-        return str.toString();
+        return new String(st, 0, top + 1);
     }
 }
