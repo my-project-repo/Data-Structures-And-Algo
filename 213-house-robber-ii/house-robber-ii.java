@@ -1,12 +1,13 @@
 class Solution {
     public int rob(int[] nums) {
         if (nums.length == 1) return nums[0];
-        int n = nums.length;
+        int n = nums.length, ans = 0;
         int[] dp = new int[n];
-        int [] dp2 = new int [n];
         Arrays.fill(dp, -1);
-        Arrays.fill(dp2,-1);
-        return Math.max(rob(0, n - 2, nums, dp), rob(1, n - 1, nums, dp2));
+        ans = rob(0, n - 2, nums, dp);
+        Arrays.fill(dp, -1);
+        ans = Math.max(ans, rob(1, n - 1, nums, dp));
+        return ans;
     }
 
     int rob(int idx, int edx, int[] nums, int[] dp) {
