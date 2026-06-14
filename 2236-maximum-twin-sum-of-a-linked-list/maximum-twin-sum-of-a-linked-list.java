@@ -35,6 +35,7 @@ class Solution {
             edx = edx.next;
         }
 
+        System.gc();
         return max;
     }
 
