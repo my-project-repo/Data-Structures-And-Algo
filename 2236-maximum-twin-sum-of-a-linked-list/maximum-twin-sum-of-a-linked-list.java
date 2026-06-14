@@ -9,8 +9,6 @@
  * }
  */
 class Solution {
-    int size = 0;
-
     public int pairSum(ListNode head) {
         // idx -> 5 4 2 1
         // edx -> 1 2 4 5
@@ -22,7 +20,15 @@ class Solution {
             fast = fast.next.next;
         }
 
-        ListNode edx = reverse(slow);
+        ListNode curr = slow, prev = null, next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        ListNode edx = prev;
         while (idx != null && edx != null) {
             max = Math.max(max, idx.val + edx.val);
             idx = idx.next;
@@ -32,16 +38,4 @@ class Solution {
         return max;
     }
 
-    ListNode reverse(ListNode head) {
-        ListNode curr = head, prev = null, next;
-        while (curr != null) {
-            next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-            size++;
-        }
-
-        return prev;
-    }
 }
