@@ -17,7 +17,8 @@ class Solution {
             slow = slow.next;
             fast = fast.next.next;
         }
-            prev.next = prev.next.next;
+        prev.next = prev.next.next;
+        System.gc();
         return head;
     }
 }
