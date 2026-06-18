@@ -25,15 +25,18 @@
  */
 class Solution {
     public boolean isSubPath(ListNode head, TreeNode root) {
-       if (root == null ) return false;
-       return isValid(head,root) || isSubPath(head,root.left) || isSubPath(head,root.right);
+        if (root == null)
+            return false;
+        return isValid(head, root) || isSubPath(head, root.left) || isSubPath(head, root.right);
     }
 
-    public boolean isValid (ListNode head , TreeNode root)
-    {
-        if (head == null) return true;
-        else if (root == null) return false;
-        else if (root.val != head.val) return false;
-        return isValid(head.next,root.left) || isValid(head.next,root.right);
+    public boolean isValid(ListNode head, TreeNode root) {
+        if (head == null)
+            return true;
+        else if (root == null)
+            return false;
+        else if (root.val != head.val)
+            return false;
+        return isValid(head.next, root.left) || isValid(head.next, root.right);
     }
 }
