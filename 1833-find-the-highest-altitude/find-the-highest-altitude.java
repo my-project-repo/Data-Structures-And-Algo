@@ -6,7 +6,6 @@ class Solution {
             prefix += i;
             ans = Math.max(prefix,ans);
         }
-        System.gc();
         return ans;
     }
 }
