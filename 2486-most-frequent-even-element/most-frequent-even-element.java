@@ -12,6 +12,7 @@ class Solution {
         int maxFreq = 0;
 
         for (int i = 0; i < freq.length; i++) {
+            if (freq[i] == 0) continue;
             if (freq[i] > maxFreq) {
                 maxFreq = freq[i];
                 ans = i;
