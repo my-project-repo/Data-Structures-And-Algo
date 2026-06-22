@@ -3,17 +3,14 @@ class Solution {
         int b = 0, a = 0, l = 0, o = 0, n = 0, max = 0;
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
-            if (ch == 'b')
-                b++;
-            else if (ch == 'a')
-                a++;
-            else if (ch == 'l')
-                l++;
-            else if (ch == 'o')
-                o++;
-            else if (ch == 'n')
-                n++;
-
+            switch (ch)
+            {
+                case 'b' : b++; break;
+                case 'a' : a++; break;
+                case 'l' : l++; break;
+                case 'o' : o++; break;
+                case 'n' : n++; break;
+            }
         }
 
         o /= 2;
