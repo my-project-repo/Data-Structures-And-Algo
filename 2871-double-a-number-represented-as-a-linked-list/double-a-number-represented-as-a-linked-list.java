@@ -11,24 +11,25 @@
 class Solution {
     public ListNode doubleIt(ListNode head) {
         int carry = 0;
-        List<Integer> list = new ArrayList<>();
-        ListNode ans = new ListNode(-1);
+        ListNode ans = null;
         ListNode iterate = ans;
-        ListNode temp = head;
-        while (temp != null) {
-            list.add(temp.val);
-            temp = temp.next;
-        }
+        head = reverse(head);
 
-        for (int i = list.size() - 1; i >= 0; i--) {
-            int val = list.get(i) * 2 + carry;
+        while (head != null) {
+            int val = head.val * 2 + carry;
             carry = val / 10;
-            iterate.next = new ListNode(val % 10);
-            iterate = iterate.next;
+            ListNode newNode = new ListNode(val % 10);
+            newNode.next = ans;
+            ans = newNode;
+            head = head.next;
         }
 
-        if (carry != 0) iterate.next = new ListNode(carry);
-        return reverse(ans.next);
+        if (carry != 0) {
+            ListNode newNode = new ListNode(carry);
+            newNode.next = ans;
+            ans = newNode;
+        }
+        return ans;
     }
 
     ListNode reverse(ListNode head) {
