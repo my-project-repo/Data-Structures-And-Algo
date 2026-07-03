@@ -1,17 +1,19 @@
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
-        return window(nums, goal) - window(nums, goal - 1);
+        return slidingWindow(nums, goal) - slidingWindow(nums, goal - 1);
     }
 
-    int window(int[] nums, int k) {
-        int l = 0, sum = 0, res = 0;
+    int slidingWindow(int[] nums, int goal) {
+        int l = 0, max = 0, sum = 0;
         for (int r = 0; r < nums.length; r++) {
             sum += nums[r];
-            while (sum > k && l <= r) {
+            while (l <= r && sum > goal) {
                 sum -= nums[l++];
             }
-            res += r - l + 1;
+
+            max += r - l + 1;
         }
-        return res;
+
+        return max;
     }
 }
