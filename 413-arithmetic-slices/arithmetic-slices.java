@@ -2,7 +2,7 @@ class Solution {
     public int numberOfArithmeticSlices(int[] nums) {
         int l = 0, res = 0;
         for (int r = 0; r < nums.length; r++) {
-            while ((r - l + 1 >= 3) && !isAS(l, r, nums)) {
+            while ((r - l + 1 >= 3) && (nums[l + 1] - nums[l]) != (nums[r] - nums[r - 1])) {
                 l++;
             }
             if (r - l + 1 >= 3)
