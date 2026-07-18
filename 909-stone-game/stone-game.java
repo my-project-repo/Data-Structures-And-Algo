@@ -23,7 +23,6 @@ class Solution {
 
             flag = !flag;
         }
-        System.gc();
         return a >= b;
     }
 }
