@@ -11,11 +11,10 @@ class Solution {
 
                     if (A[st.peek()] == v)
                         st.pop();
-                }
-             else
+                } else
+                    st.push(i);
+            } else
                 st.push(i);
-            } else 
-            st.push(i);
         }
 
         int[] ans = new int[st.size()];
