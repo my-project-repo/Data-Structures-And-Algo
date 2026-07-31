@@ -6,7 +6,6 @@ class Solution {
             freq[ch - 'a']++;
         }
         Arrays.sort(freq);
-        System.out.println(Arrays.toString(freq));
         for (int i = 25; i >= 0; i--) {
             int val = freq[i];
             if (val == 0) break;
