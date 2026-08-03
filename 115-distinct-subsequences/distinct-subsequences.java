@@ -1,27 +1,24 @@
 class Solution {
-    Integer[][] dp;
 
     public int numDistinct(String s, String t) {
-        dp = new Integer[s.length()][t.length()];
-        return sub(0, 0, s.toCharArray(), t.toCharArray());
-    }
+        int m = s.length(), n = t.length();
+        int[][] dp = new int[m + 1][n + 1];
 
-    int sub(int i, int j, char[] a, char[] b) {
-        if (j == b.length)
-            return 1;
+        for (int i = 0; i <= m; i++) {
+            dp[i][0] = 1;
+        }
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                int ans = dp[i - 1][j];
+                if (s.charAt(i - 1) == t.charAt(j - 1)) {
+                    ans += dp[i - 1][j - 1];
+                }
 
-        if (i == a.length)
-            return 0;
-
-        if (dp[i][j] != null)
-            return dp[i][j];
-
-        int ans = sub(i + 1, j, a, b);
-
-        if (a[i] == b[j]) {
-            ans += sub(i + 1, j + 1, a, b);
+                dp[i][j] = ans;
+            }
         }
 
-        return dp[i][j] = ans;
+        return dp[m][n];
     }
+
 }
