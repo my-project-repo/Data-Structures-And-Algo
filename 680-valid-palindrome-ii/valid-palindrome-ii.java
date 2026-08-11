@@ -1,21 +1,20 @@
 class Solution {
     public boolean validPalindrome(String s) {
-        char[] ch = s.toCharArray();
-        int idx = 0, edx = ch.length - 1;
+        int idx = 0, edx = s.length() - 1;
         while (idx < edx) {
-            if (ch[idx] == ch[edx]) {
+            if (s.charAt(idx) == s.charAt(edx)) {
                 idx++;
                 edx--;
             } else
-                return isValid(ch, idx + 1, edx) || isValid(ch, idx, edx - 1);
+                return isValid(s, idx + 1, edx) || isValid(s, idx, edx - 1);
 
         }
         return true;
     }
 
-    boolean isValid(char[] ch, int idx, int edx) {
+    boolean isValid(String s, int idx, int edx) {
         while (idx < edx) {
-            if (ch[idx] != ch[edx])
+            if (s.charAt(idx) != s.charAt(edx))
                 return false;
 
             idx++;
