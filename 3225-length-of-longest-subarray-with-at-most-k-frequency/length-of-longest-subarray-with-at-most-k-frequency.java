@@ -6,10 +6,7 @@ class Solution {
             map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
             while (l <= r && map.get(nums[r]) > k) {
                 int val = nums[l];
-                if (map.get(val) == 1)
-                    map.remove(val);
-                else
-                    map.put(val, map.get(val) - 1);
+                map.put(val, map.get(val) - 1);
                 l++;
             }
 
