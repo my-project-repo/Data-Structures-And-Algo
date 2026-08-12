@@ -5,8 +5,7 @@ class Solution {
         for (int r = 0; r < nums.length; r++) {
             map.put(nums[r], map.getOrDefault(nums[r], 0) + 1);
             while (l <= r && map.get(nums[r]) > k) {
-                int val = nums[l];
-                map.put(val, map.get(val) - 1);
+                map.put(nums[l], map.get(nums[l]) - 1);
                 l++;
             }
 
