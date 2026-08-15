@@ -1,23 +1,27 @@
 class Solution {
-    int mini = Integer.MAX_VALUE;
-
     public int minPathSum(int[][] grid) {
-        return min(0, 0, grid.length, grid[0].length, grid, 0, new int[grid.length][grid[0].length]);
-
+        int[][] dp = new int[grid.length][grid[0].length];
+        for (int[] d : dp)
+            Arrays.fill(d, -1);
+        return min(0, 0, grid, dp);
     }
 
-    int min(int i, int j, int m, int n, int[][] grid, int sum, int[][] dp) {
-        if (i >= m || j >= n)
+    int min(int r, int c, int[][] grid, int[][] dp) {
+        if (r == grid.length - 1 && c == grid[0].length - 1)
+            return grid[r][c];
+
+        if (r >= grid.length || c >= grid[0].length)
             return Integer.MAX_VALUE;
-        sum += grid[i][j];
-        if (i == m - 1 && j == n - 1)
-            return sum;
-        if (dp[i][j] != 0)
-            return sum + dp[i][j];
-        int down = min(i + 1, j, m, n, grid, sum, dp);
-        int right = min(i, j + 1, m, n, grid, sum, dp);
-        int min = Math.min(down, right);
-        dp[i][j] = min - sum;
-        return min;
+
+        if (dp[r][c] != -1)
+            return dp[r][c];
+
+        int down = min(r + 1, c, grid, dp);
+        int right = min(r, c + 1, grid, dp);
+        int sum = Math.min(down, right);
+        if (sum == Integer.MAX_VALUE)
+            dp[r][c] = Integer.MAX_VALUE;
+
+        return dp[r][c] = grid[r][c] + sum;
     }
 }
