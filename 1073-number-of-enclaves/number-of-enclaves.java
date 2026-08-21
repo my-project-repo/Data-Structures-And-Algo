@@ -6,8 +6,6 @@ class Solution {
         int m = grid.length;
         int n = grid[0].length;
 
-        boolean[][] isVisited = new boolean[m][n];
-
         for (int r = 0; r < m; r++) {
             for (int c = 0; c < n; c++) {
 
@@ -16,7 +14,7 @@ class Solution {
 
                     if (r == 0 || r == m - 1 || c == 0 || c == n - 1) {
                         q.add(new int[] { r, c });
-                        isVisited[r][c] = true;
+                        grid[r][c] = 2;
                     }
                 }
             }
@@ -41,12 +39,12 @@ class Solution {
                 if (nr < 0 || nr >= m || nc < 0 || nc >= n)
                     continue;
 
-                if (isVisited[nr][nc])
+                if (grid[nr][nc] == 2)
                     continue;
 
                 if (grid[nr][nc] == 1) {
                     q.add(new int[] { nr, nc });
-                    isVisited[nr][nc] = true;
+                    grid[nr][nc] = 2;
                     connected++;
                 }
             }
