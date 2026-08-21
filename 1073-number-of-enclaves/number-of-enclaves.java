@@ -2,25 +2,19 @@ class Solution {
     public int numEnclaves(int[][] grid) {
         Queue<int[]> q = new LinkedList<>();
 
-        int one = 0;
         int m = grid.length;
         int n = grid[0].length;
 
         for (int r = 0; r < m; r++) {
             for (int c = 0; c < n; c++) {
-
-                if (grid[r][c] == 1) {
-                    one++;
-
-                    if (r == 0 || r == m - 1 || c == 0 || c == n - 1) {
+                if (r == 0 || r == m - 1 || c == 0 || c == n - 1) {
+                    if (grid[r][c] == 1) {
                         q.add(new int[] { r, c });
                         grid[r][c] = 2;
                     }
                 }
             }
         }
-
-        int connected = q.size();
 
         int[][] directions = {
                 { 1, 0 },
@@ -45,11 +39,19 @@ class Solution {
                 if (grid[nr][nc] == 1) {
                     q.add(new int[] { nr, nc });
                     grid[nr][nc] = 2;
-                    connected++;
                 }
             }
         }
 
-        return one - connected;
+        int ans = 0;
+        for (int r = 0; r < m; r++) {
+            for (int c = 0; c < n; c++) {
+                if (grid[r][c] == 1)
+                    ans++;
+            }
+        }
+
+        return ans;
+
     }
 }
