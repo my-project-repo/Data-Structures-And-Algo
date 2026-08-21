@@ -15,7 +15,7 @@ class Solution {
                     one++;
 
                     if (r == 0 || r == m - 1 || c == 0 || c == n - 1) {
-                        q.add(new int[]{r, c});
+                        q.add(new int[] { r, c });
                         isVisited[r][c] = true;
                     }
                 }
@@ -25,10 +25,10 @@ class Solution {
         int connected = q.size();
 
         int[][] directions = {
-            {1, 0},
-            {0, 1},
-            {-1, 0},
-            {0, -1}
+                { 1, 0 },
+                { 0, 1 },
+                { -1, 0 },
+                { 0, -1 }
         };
 
         while (!q.isEmpty()) {
@@ -45,7 +45,7 @@ class Solution {
                     continue;
 
                 if (grid[nr][nc] == 1) {
-                    q.add(new int[]{nr, nc});
+                    q.add(new int[] { nr, nc });
                     isVisited[nr][nc] = true;
                     connected++;
                 }
