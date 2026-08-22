@@ -2,7 +2,7 @@ class Solution {
     public int numIslands(char[][] grid) {
         int[][] directions = { { 1, 0 }, { 0, 1 }, { -1, 0 }, { 0, -1 } };
         Queue<int[]> q = new LinkedList<>();
-        int m = grid.length, n = grid[0].length , ans = 0;
+        int m = grid.length, n = grid[0].length, ans = 0;
         for (int r = 0; r < m; r++) {
             for (int c = 0; c < n; c++) {
                 if (grid[r][c] == '1') {
