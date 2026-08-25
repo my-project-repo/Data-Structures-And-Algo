@@ -9,7 +9,7 @@ class Solution {
             return Double.compare(x,y);
         });
 
-        pq.addAll(Arrays.asList(points));
+        for (int [] point : points) pq.add(point);
         for (int i = 0;i<k;i++)
         {
             int [] point = pq.poll();
