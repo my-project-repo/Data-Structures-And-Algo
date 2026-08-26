@@ -13,7 +13,6 @@ class Solution {
             for (int c = 0; c < n; c++) {
                 if (grid[r][c] == 2) {
                     q.add(new int[] { r, c });
-                    grid[r][c] = 3;
                 } else if (grid[r][c] == 1)
                     count++;
             }
