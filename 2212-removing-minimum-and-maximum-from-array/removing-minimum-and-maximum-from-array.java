@@ -3,8 +3,10 @@ class Solution {
         int min = nums[0], max = nums[0];
         int disMin = 0, disMax = 0, n = nums.length;
         for (int i : nums) {
-            min = Math.min(min, i);
-            max = Math.max(max, i);
+            if (min > i)
+                min = i;
+            if (max < i)
+                max = i;
         }
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == min) {
@@ -12,6 +14,9 @@ class Solution {
             } else if (nums[i] == max) {
                 disMax = (i + 1);
             }
+
+            if (disMin != 0 && disMax != 0)
+                break;
         }
 
         int minDis = disMin, maxDis = disMax;
@@ -22,6 +27,8 @@ class Solution {
             } else if (nums[i] == max) {
                 disMax = (n - i);
             }
+            if (disMin != 0 && disMax != 0)
+                break;
         }
         int a = Math.max(minDis, maxDis);
         int b = Math.max(disMax, disMin);
