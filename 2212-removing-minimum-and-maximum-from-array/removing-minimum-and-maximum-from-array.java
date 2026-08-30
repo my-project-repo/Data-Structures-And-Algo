@@ -8,7 +8,7 @@ class Solution {
         }
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] == min) {
-                disMin = (i + 1) ;
+                disMin = (i + 1);
             } else if (nums[i] == max) {
                 disMax = (i + 1);
             }
@@ -18,14 +18,14 @@ class Solution {
         disMin = disMax = 0;
         for (int i = n - 1; i >= 0; i--) {
             if (nums[i] == min) {
-                disMin = (n - i) ;
+                disMin = (n - i);
             } else if (nums[i] == max) {
-                disMax = (n - i) ;
+                disMax = (n - i);
             }
         }
-        int a = Math.max(minDis,maxDis);
-        int b = Math.max(disMax,disMin);
-        int c = Math.min(minDis,disMin) + Math.min(maxDis,disMax);
-        return Math.min(a,Math.min(b,c));
+        int a = Math.max(minDis, maxDis);
+        int b = Math.max(disMax, disMin);
+        int c = Math.min(minDis, disMin) + Math.min(maxDis, disMax);
+        return Math.min(a, Math.min(b, c));
     }
 }
