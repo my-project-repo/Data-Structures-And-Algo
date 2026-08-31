@@ -17,7 +17,7 @@ class Solution {
         int index = 1, cp = 0, max = Integer.MIN_VALUE, min = Integer.MAX_VALUE, minima = Integer.MAX_VALUE;
         while (curr.next != null) {
             index++;
-            if (prev.val < curr.val && curr.val > curr.next.val) // maxima
+            if ((prev.val < curr.val && curr.val > curr.next.val) || (prev.val > curr.val && curr.val < curr.next.val)) 
             {
                 cp++;
                 if (cp == 1) {
@@ -28,18 +28,6 @@ class Solution {
                     max = index;
                 }
 
-            }
-
-            if (prev.val > curr.val && curr.val < curr.next.val) // minima
-            {
-                cp++;
-                if (cp == 1) {
-                    min = index;
-                    max = index;
-                } else {
-                    minima = Math.min(minima, index - max);
-                    max = index;
-                }
             }
 
             prev = curr;
