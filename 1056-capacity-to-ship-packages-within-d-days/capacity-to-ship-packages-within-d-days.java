@@ -1,34 +1,41 @@
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
-        int idx = 0 , edx = 0, ans = 0;
+        int idx = weights[0] , edx = 0 ,ans = 0;
         for (int i : weights)
         {
-            edx += i;
             idx = Math.max(idx,i);
-        } 
+            edx += i;
+        }
+
         while (idx <= edx)
         {
-            int mid = (edx + idx) / 2;
-            if (isPossible(weights,mid,days))
+            int guess = (edx + idx)/2;
+            if (isPossible(guess,weights,days))
             {
-                ans = mid;
-                edx = mid-1;
+                ans = guess;
+                edx = guess-1;
             } else
-            idx = mid + 1;
+            idx = guess + 1;
         }
+
         return ans;
 
     }
 
-    boolean isPossible(int[] w, int k, int days) {
-        int cap = k, day = 1;
-        for (int i : w) {
-            if (i > k) {
-                day++;
-                k = cap;
+    boolean isPossible (int guess , int [] W , int k)
+    {
+        int count = 1 , cost = 0;
+        for (int i : W)
+        {
+            if (cost + i > guess)
+            {
+                count++;
+                cost = 0;
             }
-            k -= i;
+
+            cost += i;
         }
-        return day <= days;
+
+        return count <= k;
     }
 }
