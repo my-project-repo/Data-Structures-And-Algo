@@ -2,7 +2,7 @@ class Solution {
     Integer[][] dp;
 
     public int maximalSquare(char[][] matrix) {
-        int ans = Integer.MIN_VALUE, m = matrix.length, n = matrix[0].length;
+        int ans = 0, m = matrix.length, n = matrix[0].length;
         dp = new Integer[m][n];
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
