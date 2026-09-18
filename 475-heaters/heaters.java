@@ -4,28 +4,33 @@ class Solution {
         Arrays.sort(houses);
         Arrays.sort(heaters);
         while (idx <= edx) {
-            int radius = (edx + idx) / 2;
-            if (isPossible(radius, houses, heaters)) {
-                ans = radius;
-                edx = radius - 1;
+            int r = (edx + idx) / 2;
+            if (isPossible(r, houses, heaters)) {
+                ans = r;
+                edx = r - 1;
             } else
-                idx = radius + 1;
+                idx = r + 1;
         }
 
         return ans;
     }
 
-    boolean isPossible(int radius, int[] houses, int[] heaters) {
-        int idx = 0, idx2 = 0, edx = houses.length, edx2 = heaters.length;
-        while (idx < edx && idx2 < edx2) {
-            if ((heaters[idx2] + radius) >= houses[idx] && houses[idx] >= (heaters[idx2] - radius))
+    boolean isPossible(int radius, int[] house, int[] H) {
+        int idx = 0, i = 0;
+        while (i < house.length) {
+            if (H[idx] >= house[i] && (H[idx] - radius) <= house[i])
+                i++;
+
+            else if (H[idx] < house[i] && (H[idx] + radius) >= house[i])
+                i++;
+            else {
+
+                if (idx == H.length - 1)
+                    break;
                 idx++;
-            else
-                idx2++;
+            }
         }
 
-        if (idx == edx)
-            return true;
-        return false;
+        return i == house.length;
     }
 }
