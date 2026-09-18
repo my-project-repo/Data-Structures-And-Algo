@@ -17,16 +17,13 @@ class Solution {
 
     boolean isPossible(int radius, int[] house, int[] H) {
         int idx = 0, i = 0;
-        while (i < house.length) {
+        while (i < house.length && idx < H.length) {
             if (H[idx] >= house[i] && (H[idx] - radius) <= house[i])
                 i++;
 
             else if (H[idx] < house[i] && (H[idx] + radius) >= house[i])
                 i++;
             else {
-
-                if (idx == H.length - 1)
-                    break;
                 idx++;
             }
         }
