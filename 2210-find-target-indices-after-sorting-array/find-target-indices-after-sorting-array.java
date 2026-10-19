@@ -12,6 +12,9 @@ class Solution {
             list.add(diff);
             diff++;
         }
+
+        System.gc();
+        
         return list;
     }
 }
