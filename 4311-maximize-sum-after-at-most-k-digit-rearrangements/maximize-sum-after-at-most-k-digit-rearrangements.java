@@ -1,25 +1,17 @@
 class Solution {
     public long maximizeSum(int[] nums, int k) {
         long ans = 0;
-        Integer[][] arr = new Integer[nums.length][3];
-
-        for (int i = 0; i < nums.length; i++) {
-            int max = maxOutput(nums[i]);
-
-            arr[i][0] = nums[i];
-            arr[i][1] = max;
-            arr[i][2] = max - nums[i];
-
+        int n = nums.length;
+        long[] gain = new long[n];
+        for (int i = 0; i < n; i++) {
             ans += nums[i];
+            int max = maxOutput(nums[i]);
+            gain[i] = max - nums[i];
         }
 
-        Arrays.sort(arr, (a, b) -> Integer.compare(b[2], a[2]));
-
-        for (int i = 0; i < nums.length && k > 0; i++) {
-            if (arr[i][2] <= 0)
-                break;
-
-            ans += arr[i][2];
+        Arrays.sort(gain);
+        for (int i = n - 1; i >= 0 && k > 0; i--) {
+            ans += gain[i];
             k--;
         }
 
