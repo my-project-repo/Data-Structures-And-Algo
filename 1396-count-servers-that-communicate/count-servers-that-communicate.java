@@ -5,13 +5,10 @@ class Solution {
         int[] col = new int[c];
         for (int i = 0; i < r; i++) {
             for (int j = 0; j < c; j++) {
-                row[i] += grid[i][j];
-            }
-        }
-
-        for (int i = 0; i < c; i++) {
-            for (int j = 0; j < r; j++) {
-                col[i] += grid[j][i];
+                if (grid[i][j] == 1) {
+                    row[i]++;
+                    col[j]++;
+                }
             }
         }
 
