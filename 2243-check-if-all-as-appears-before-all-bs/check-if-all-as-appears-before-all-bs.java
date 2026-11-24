@@ -2,8 +2,9 @@ class Solution {
     public boolean checkString(String s) {
         // abbabaabab 
         boolean flag = false;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'b') {
+        char[] ch = s.toCharArray();
+        for (int i = 0; i < ch.length; i++) {
+            if (ch[i] == 'b') {
                 flag = true;
             } else {
                 if (flag)
