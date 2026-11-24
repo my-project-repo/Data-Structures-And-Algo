@@ -1,17 +1,13 @@
 class Solution {
     public boolean checkString(String s) {
         // abbabaabab 
-        int aCount = 0;
+        boolean flag = false;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'a')
-                aCount++;
-        }
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == 'a')
-                aCount--;
-            else {
-                return aCount == 0;
+            if (s.charAt(i) == 'b') {
+                flag = true;
+            } else {
+                if (flag)
+                    return false;
             }
         }
 
